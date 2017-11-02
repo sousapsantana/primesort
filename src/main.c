@@ -1,17 +1,43 @@
-/* Contador de palavras
- *
- * Este programa recebera uma serie de caracteres representando palavras em sua
- * entrada. Ao receber um caractere fim de linha ('\n'), deve imprimir na tela o
- * numero de palavras separadas que recebeu e, apos, encerrar.
- */
-
 #include <stdio.h>
 
-int main() {
+int primo(int x){ //verifica se um numero eh primo
+    int i;
+    if (x == 1)
+        return 0;
 
-  int x, y;
+    for (i = 2; i <= x / 2; ++i)
+        if (x % i == 0)
+            return 0; // nao eh primo
+    return 1; // eh primo
+}
 
-  scanf("%d %d\n", &x, &y);
-  printf("%d\n", x + 200);
-  return 0;
+void ler_arquivo_em_txt()
+{
+    char input[256];
+    FILE *p1;
+    p1 = fopen("stdin.txt","w");
+    while (fgets(input, 256, stdin))
+        fputs(input, p1);
+
+    fclose(p1);
+}
+
+int main()
+{
+    FILE *fp;
+    int aux;
+
+    ler_arquivo_em_txt();
+
+    fp = popen("sort -r -h stdin.txt", "r");
+
+    while (1) {
+        fscanf(fp, " %d", &aux);
+        if (aux < 0)
+            break;
+        if (primo(aux) == 0)
+            printf("%d\n", aux);
+    }
+    pclose(fp);
+    return 0;
 }
