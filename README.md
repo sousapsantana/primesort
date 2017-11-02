@@ -34,3 +34,33 @@ Entrada | Saida
    limítrofes ou mal-definidos.
 1. Lembre-se de seguir as [instruções de submissão](docs/instrucoes.md).
 1. Se desejar, proponha novos casos de teste.
+
+
+## Resultados
+
+Os resultados foram obtidos rodando o seguinte comando:
+```
+diff <(./main < tests/test0x.in) tests/test0x.out
+```
+
+E não foram encontrados diferenças em nenhum dos arquivos.
+
+Exemplo de execução:
+
+```
+> ./main < tests/test01.in
+900
+830
+590
+500
+500
+200
+90
+55
+50
+30
+20
+1
+1
+
+```
