@@ -12,7 +12,7 @@ int primo(int x){ //verifica se um numero eh primo
 
 int main()
 {
-    FILE *fp = popen("sort -r -h", "w");
+    FILE *fp = popen("sort -r -h", "r");
     int aux;
 
     while (1) {
@@ -20,7 +20,10 @@ int main()
         if (aux < 0)
             break;
         if (primo(aux) == 0)
+        {
             fprintf(fp, "%d\n", aux);
+            printf("%d\n", aux);
+        }
     }
     pclose(fp);
     return 0;
